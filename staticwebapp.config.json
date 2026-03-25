@@ -1,0 +1,229 @@
+{
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AZURE_AD_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_AD_CLIENT_SECRET"
+        },
+        "login": {
+          "loginParameters": ["domain_hint=organizations"]
+        },
+        "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+      }
+    }
+  },
+  "routes": [
+    {
+      "route": "/index.html",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
+      "route": "/solutions-payers.html",
+      "redirect": "/solutions-payers",
+      "statusCode": 301
+    },
+    {
+      "route": "/solutions-providers.html",
+      "redirect": "/solutions-providers",
+      "statusCode": 301
+    },
+    {
+      "route": "/pricing.html",
+      "redirect": "/pricing",
+      "statusCode": 301
+    },
+    {
+      "route": "/platform.html",
+      "redirect": "/platform",
+      "statusCode": 301
+    },
+    {
+      "route": "/assessment.html",
+      "redirect": "/assessment",
+      "statusCode": 301
+    },
+    {
+      "route": "/insights.html",
+      "redirect": "/insights",
+      "statusCode": 301
+    },
+    {
+      "route": "/release-notes.html",
+      "redirect": "/release-notes",
+      "statusCode": 301
+    },
+    {
+      "route": "/legal/privacy-policy.html",
+      "redirect": "/legal/privacy-policy",
+      "statusCode": 301
+    },
+    {
+      "route": "/legal/privacy-policy",
+      "rewrite": "/legal/privacy-policy.html"
+    },
+    {
+      "route": "/solutions-payers",
+      "rewrite": "/solutions-payers.html"
+    },
+    {
+      "route": "/solutions-providers",
+      "rewrite": "/solutions-providers.html"
+    },
+    {
+      "route": "/pricing",
+      "rewrite": "/pricing.html"
+    },
+    {
+      "route": "/platform",
+      "rewrite": "/platform.html"
+    },
+    {
+      "route": "/assessment",
+      "rewrite": "/assessment.html"
+    },
+    {
+      "route": "/insights",
+      "rewrite": "/insights.html"
+    },
+    {
+      "route": "/release-notes",
+      "rewrite": "/release-notes.html"
+    },
+    {
+      "route": "/docs",
+      "rewrite": "/docs/index.html"
+    },
+    {
+      "route": "/docs/quickstart.html",
+      "redirect": "/docs/quickstart",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/quickstart",
+      "rewrite": "/docs/quickstart.html"
+    },
+    {
+      "route": "/docs/compliance.html",
+      "redirect": "/docs/compliance",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/compliance",
+      "rewrite": "/docs/compliance.html"
+    },
+    {
+      "route": "/docs/architecture.html",
+      "redirect": "/docs/architecture",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/architecture",
+      "rewrite": "/docs/architecture.html"
+    },
+    {
+      "route": "/docs/api.html",
+      "redirect": "/docs/api",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/api",
+      "rewrite": "/docs/api.html"
+    },
+    {
+      "route": "/docs/deployment.html",
+      "redirect": "/docs/deployment",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/deployment",
+      "rewrite": "/docs/deployment.html"
+    },
+    {
+      "route": "/login.html",
+      "redirect": "/login",
+      "statusCode": 301
+    },
+    {
+      "route": "/login",
+      "rewrite": "/login.html"
+    },
+    {
+      "route": "/portal/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/sitemap.xml",
+      "headers": {
+        "Cache-Control": "public, max-age=3600",
+        "Content-Type": "application/xml; charset=utf-8"
+      }
+    },
+    {
+      "route": "/robots.txt",
+      "headers": {
+        "Cache-Control": "public, max-age=3600",
+        "Content-Type": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "route": "/*.html",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "route": "/css/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/graphics/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/portal/*", "/api/*", "/.auth/*", "/assets/*", "/css/*", "/js/*", "/graphics/*", "/sitemap.xml", "/robots.txt"]
+  },
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
+      "statusCode": 302
+    },
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".svg": "image/svg+xml",
+    ".css": "text/css",
+    ".js": "text/javascript",
+    ".html": "text/html",
+    ".txt": "text/plain",
+    ".xml": "application/xml"
+  }
+}

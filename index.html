@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Health Office — Modern Integration Layer for Health Plans</title>
+  <meta name="description" content="Avoid $2M+ upgrades. Achieve CMS-0057-F compliance 18 months early with a source-available integration platform for healthcare payers. Multi-clearinghouse EDI, FHIR R4 APIs, production-ready." />
+  <meta name="keywords" content="CMS-0057-F compliance, healthcare payer integration platform, FHIR R4 API health plan, X12 EDI to FHIR, healthcare clearinghouse integration, health plan modernization, Medicaid MCO compliance 2027, source-available healthcare platform" />
+  <link rel="canonical" href="https://cloudhealthoffice.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cloud Health Office" />
+  <meta property="og:url" content="https://cloudhealthoffice.com/" />
+  <meta property="og:title" content="Cloud Health Office — Modern Integration Layer for Health Plans" />
+  <meta property="og:description" content="Avoid $2M+ upgrades. Achieve CMS-0057-F compliance 18 months early with a source-available integration platform for healthcare payers. Multi-clearinghouse EDI, FHIR R4 APIs, production-ready." />
+  <meta property="og:image" content="https://cloudhealthoffice.com/graphics/logo-cloudhealthoffice-sentinel-primary.svg" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://cloudhealthoffice.com/" />
+  <meta name="twitter:title" content="Cloud Health Office — Modern Integration Layer for Health Plans" />
+  <meta name="twitter:description" content="Avoid $2M+ upgrades. Achieve CMS-0057-F compliance 18 months early with a source-available integration platform for healthcare payers. Multi-clearinghouse EDI, FHIR R4 APIs, production-ready." />
+  <meta name="twitter:image" content="https://cloudhealthoffice.com/graphics/logo-cloudhealthoffice-sentinel-primary.svg" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cloud Health Office",
+    "url": "https://cloudhealthoffice.com",
+    "logo": "https://cloudhealthoffice.com/graphics/logo-cloudhealthoffice-sentinel-primary.svg",
+    "description": "Modern integration platform for healthcare payer core administration systems. CMS-0057-F compliant, multi-clearinghouse EDI, FHIR R4 APIs.",
+    "foundingDate": "2024",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "sales@cloudhealthoffice.com",
+      "contactType": "sales"
+    },
+    "sameAs": [
+      "https://github.com/aurelianware/cloudhealthoffice"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cloud Health Office",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Cloud (Azure, AWS, GCP, Kubernetes)",
+    "url": "https://cloudhealthoffice.com",
+    "softwareVersion": "4.0.0",
+    "description": "Open-source integration platform for healthcare payers. CMS-0057-F compliance, X12 EDI to FHIR R4 transformation, multi-clearinghouse support.",
+    "author": {
+      "@type": "Organization",
+      "name": "Aurelianware, Inc.",
+      "url": "https://cloudhealthoffice.com"
+    }
+  }
+  </script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-JQNNrBf52mV2BxHPtkLAv.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+  <link rel="stylesheet" href="css/sentinel.css" />
+  <script src="js/auth.js"></script>
+  <script src="js/mobile-nav.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Cloud Health Office Home">
+        <img src="graphics/logo-cloudhealthoffice-sentinel-primary.svg" alt="" class="nav-logo-img" aria-hidden="true" />
+        <span class="nav-logo-text">Cloud Health Office</span>
+      </a>
+      <div class="nav-right">
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" id="mobileMenuToggle">&#9776;</button>
+        <ul id="mainNav">
+          <li><a href="/solutions-payers">Solutions</a></li>
+          <li><a href="/cms-0057f-compliance">CMS Compliance</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/platform">Platform</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="https://portal.cloudhealthoffice.com" target="_blank" rel="noopener noreferrer" style="color:#00ff88;">Demo Portal</a></li>
+          <li><a href="https://github.com/aurelianware/cloudhealthoffice" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="/login" style="color:#00ffff; font-weight:bold;">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavigation('#mainNav');
+    });
+  </script>
+
+  <main id="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero-section" aria-label="Cloud Health Office hero">
+      <div class="hero-circuit-bg" aria-hidden="true"></div>
+      <div class="hero-scan-line" aria-hidden="true"></div>
+      <div class="hero-radial" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <img src="graphics/logo-cloudhealthoffice-sentinel-primary.svg"
+             alt="Cloud Health Office The Sentinel"
+             class="hero-logo" />
+
+        <div class="hero-badge">v4.0.0 &nbsp;&middot;&nbsp; Production SaaS &nbsp;&middot;&nbsp; 1,018 Tests &nbsp;&middot;&nbsp; Zero Vulnerabilities</div>
+
+        <h1 class="hero-headline">
+          The Integration Layer<br>
+          Health Plans Have Been<br>
+          Waiting For
+        </h1>
+
+        <p class="hero-subheadline">
+          Avoid $2M+ upgrades. Achieve CMS-0057-F compliance 18 months ahead of schedule.<br>
+          Built by engineers who have shipped 50+ payer platform implementations.
+        </p>
+
+        <div class="hero-cta">
+          <a href="https://portal.cloudhealthoffice.com/contact-sales"
+             class="button"
+             style="font-size:1.05rem; padding:15px 38px;">Contact Sales &rarr;</a>
+          <a href="https://portal.cloudhealthoffice.com"
+             class="button button-secondary"
+             style="font-size:1.05rem; padding:15px 38px;"
+             target="_blank" rel="noopener noreferrer">Launch Demo Portal</a>
+          <a href="https://github.com/aurelianware/cloudhealthoffice"
+             class="button button-secondary"
+             style="font-size:1.05rem; padding:15px 38px;"
+             target="_blank" rel="noopener noreferrer">View Source &rarr;</a>
+          <a href="https://sandbox.cloudhealthoffice.com/?spec=patient-access"
+             class="button button-secondary"
+             style="font-size:1.05rem; padding:15px 38px;"
+             target="_blank" rel="noopener noreferrer">CMS 0057-F Patient Access &rarr;</a>
+          <a href="https://portal.cloudhealthoffice.com/apis"
+             class="button button-secondary"
+             style="font-size:1.05rem; padding:15px 38px;"
+             target="_blank" rel="noopener noreferrer">Claims Repricing API</a>                      
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">&darr; SCROLL</div>
+    </section>
+
+    <!-- ===== TICKER ===== -->
+    <div class="ticker-section" aria-label="Platform highlights">
+      <div class="ticker-track" aria-hidden="true">
+        <span class="ticker-item"><span>100,000+ Repository Clones</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Zero Security Vulnerabilities</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>1,018 Tests Passing</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>CMS-0057-F Compliant &mdash; 18 Months Early</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Production SaaS Live</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Multi-Tenant Architecture</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>&lt;1 Hour Deployment</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>HIPAA-Compliant Infrastructure</span><span class="ticker-dot">&#9670;</span></span>
+        <!-- Repeat for seamless loop -->
+        <span class="ticker-item"><span>100,000+ Repository Clones</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Zero Security Vulnerabilities</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>1,018 Tests Passing</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>CMS-0057-F Compliant &mdash; 18 Months Early</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Production SaaS Live</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>Multi-Tenant Architecture</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>&lt;1 Hour Deployment</span><span class="ticker-dot">&#9670;</span></span>
+        <span class="ticker-item"><span>HIPAA-Compliant Infrastructure</span><span class="ticker-dot">&#9670;</span></span>
+      </div>
+    </div>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats-section" aria-label="Platform statistics">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-number">100K+</span>
+          <span class="stat-label">GitHub Clones<br></span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Security<br>Vulnerabilities</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">&lt;1hr</span>
+          <span class="stat-label">Production<br>Deployment</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1,018</span>
+          <span class="stat-label">Tests,<br>85.93% Coverage</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PLATFORM FEATURES ===== -->
+    <section>
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow">The Platform</span>
+          <h2 class="section-title">Everything a health plan needs.<br><span>Nothing it doesn&rsquo;t.</span></h2>
+          <p class="section-subtitle">Production-grade infrastructure purpose-built for the intersection of legacy core systems and modern regulatory compliance.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#9889;</div>
+            <h3>CMS-0057-F Compliance</h3>
+            <p>Complete compliance with the CMS Interoperability and Prior Authorization Rule &mdash; 18 months ahead of the January 2027 deadline. Zero external dependencies.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#128279;</div>
+            <h3>Multi-Clearinghouse EDI</h3>
+            <p>Native connectors for Availity, Change Healthcare, Optum, and Inovalon. Failover capability, zero vendor lock-in, and full business continuity.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#128260;</div>
+            <h3>X12 to FHIR R4 Transformation</h3>
+            <p>Automated transformation of X12 EDI transactions (270/837/278/835) to FHIR R4 resources. Real-time, bidirectional, production-tested at scale.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#127973;</div>
+            <h3>Core System Integration</h3>
+            <p>Connects to any claims administration platform without replatforming. Extends your existing investment rather than replacing it.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#128274;</div>
+            <h3>HIPAA-Grade Security</h3>
+            <p>BAA included. Zero known vulnerabilities. End-to-end encryption. Production-ready audit trails and compliance reporting &mdash; out of the box.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#127760;</div>
+            <h3>Flexible Deployment</h3>
+            <p>Kubernetes-native architecture with Argo Workflows on AKS, EKS, or GKE. Container-based microservices with full infrastructure ownership. Deploy to your own subscription.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">&#128184;</div>
+            <h3>Premium Billing &amp; ACH</h3>
+            <p>Automated monthly premium invoicing with NACHA/ACH file generation, EFT draft lifecycle management, and Stripe ACH integration. Batch billing runs with sponsor-level invoicing and return processing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CMS-0057-F COMPLIANCE ===== -->
+    <section class="compliance-section">
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow" style="color:#00ff88;">CMS-0057-F</span>
+          <h2 class="section-title" style="color:#00ff88; text-shadow:0 0 30px rgba(0,255,136,0.35);">Compliant. 18 Months Early.</h2>
+          <p class="section-subtitle">The January 2027 deadline is not a future problem. It was solved in production, now.</p>
+        </div>
+
+        <figure style="margin:0 auto 40px auto; max-width:1000px;">
+          <img src="graphics/cms-0057f-compliance.svg"
+               alt="CMS-0057-F compliance diagram showing Patient Access API, Provider Access API, Prior Authorization, Payer-to-Payer API, and Provider Directory API — all complete"
+               style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,255,136,0.15);" />
+        </figure>
+
+        <div class="compliance-badges" role="list" aria-label="Compliance certifications">
+          <span class="compliance-badge-item" role="listitem">&#10003; Patient Access API</span>
+          <span class="compliance-badge-item" role="listitem">&#10003; Provider Access API</span>
+          <span class="compliance-badge-item" role="listitem">&#10003; Prior Authorization API</span>
+          <span class="compliance-badge-item" role="listitem">&#10003; Payer-to-Payer API</span>
+          <span class="compliance-badge-item" role="listitem">&#10003; Da Vinci IGs</span>
+          <span class="compliance-badge-item" role="listitem">&#10003; USCDI v1/v2</span>
+        </div>
+
+        <p style="text-align:center; font-size:1.05rem; color:rgba(176,176,176,0.8); max-width:600px; margin:0 auto 36px auto; line-height:1.7;">
+          Transform X12 EDI (270/837/278/835) to FHIR R4 with zero external dependencies.<br>
+          1,018 comprehensive tests. 85.93% coverage. v4.0.0 production-ready.
+        </p>
+
+        <div style="text-align:center;">
+          <a href="/docs/compliance"
+             class="button button-green"
+             target="_blank" rel="noopener noreferrer">CMS-0057-F Compliance Guide &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS / CASE STUDIES ===== -->
+    <section>
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow">Results</span>
+          <h2 class="section-title">Real outcomes.<br><span>Anonymized. Specific.</span></h2>
+          <p class="section-subtitle">Health plans don&rsquo;t announce wins. The numbers tell the story.</p>
+        </div>
+
+        <div class="cases-grid">
+          <div class="case-card">
+            <div class="case-card-tag">Medicaid MCO</div>
+            <h3>CMS Compliance Without a Core Upgrade</h3>
+            <p>Regional Medicaid MCO needed CMS-0057-F compliance without an 18-month core platform replatform. Deployed in 3 weeks. Live in production with zero disruption.</p>
+            <div class="case-metric">&lt;3 weeks</div>
+            <div class="case-metric-label">from first deployment to production live</div>
+            <ul class="benefit-list" style="margin-top:20px;">
+              <li>Avoided $2M+ core platform upgrade cost</li>
+              <li>Live 18 months before the CMS deadline</li>
+              <li>Zero impact to existing claim operations</li>
+            </ul>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-tag">Regional Health Plan</div>
+            <h3>Multi-Clearinghouse Resilience</h3>
+            <p>Health plan dependent on a single clearinghouse added secondary failover capability. Zero transactions lost during a major clearinghouse outage.</p>
+            <div class="case-metric">100%</div>
+            <div class="case-metric-label">transaction continuity during clearinghouse outage</div>
+            <ul class="benefit-list" style="margin-top:20px;">
+              <li>Secondary clearinghouse live in under 1 week</li>
+              <li>Eliminated single point of operational failure</li>
+              <li>Reduced EDI vendor dependency risk</li>
+            </ul>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-tag">Medicare Advantage</div>
+            <h3>BPaaS Exit to Internal Control</h3>
+            <p>Medicare Advantage plan exiting a BPaaS vendor needed internal operations capability within 6 months. Delivered ahead of schedule with full audit trail.</p>
+            <div class="case-metric">-64%</div>
+            <div class="case-metric-label">reduction in external vendor costs, year-over-year</div>
+            <ul class="benefit-list" style="margin-top:20px;">
+              <li>Full ownership of integration infrastructure</li>
+              <li>Predictable Azure infrastructure costs</li>
+              <li>Internal team fully operational within 90 days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLAIMS PIPELINE ===== -->
+    <section>
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow">Architecture</span>
+          <h2 class="section-title">10-Step Claims Adjudication.<br><span>&lt;500ms end-to-end.</span></h2>
+          <p class="section-subtitle">From SFTP ingestion through Argo Workflows to real-time adjudication with full benefit calculation.</p>
+        </div>
+
+        <figure style="margin:0 auto; max-width:1100px;">
+          <img src="graphics/claims-adjudication-flow.svg"
+               alt="837 claims adjudication pipeline showing 10-step flow from SFTP ingestion through Kafka, claims service API, benefit engine, to approved or denied outcome"
+               style="width:100%; height:auto; border-radius:12px; border:1px solid rgba(0,255,255,0.12);" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== DEPLOYMENT OPTIONS ===== -->
+    <section style="background:linear-gradient(180deg, #000 0%, #000d1a 50%, #000 100%);">
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow">Infrastructure</span>
+          <h2 class="section-title">One platform.<br><span>Any cloud.</span></h2>
+          <p class="section-subtitle">Kubernetes-native architecture with Argo Workflows. Deploy on any cloud or on-premise with full infrastructure control.</p>
+        </div>
+
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <span class="deploy-icon" aria-hidden="true">&#9881;&#65039;</span>
+            <h3>Kubernetes with Argo Workflows</h3>
+            <p style="color:rgba(176,176,176,0.7); font-size:0.95rem; margin-bottom:20px;">
+              <strong style="color:#00ffff;">Best for:</strong> Enterprise control, cloud independence, production-grade orchestration
+            </p>
+            <ul class="benefit-list">
+              <li>Deploy on Azure AKS, AWS EKS, or GCP GKE</li>
+              <li>Argo Workflows for Kubernetes-native orchestration</li>
+              <li>Full infrastructure ownership and control</li>
+              <li>Container-based microservices architecture</li>
+              <li>Hybrid and on-premise capable</li>
+              <li>BSL 1.1 &mdash; bring your own environment</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="text-align:center; margin-top:32px; font-size:0.9rem; color:rgba(176,176,176,0.45);">
+          Complete FHIR R4, EDI, and compliance capabilities on any Kubernetes cluster.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== BUILT BY EXPERTS ===== -->
+    <section>
+      <div class="section-wrapper">
+        <div style="background:rgba(8,8,8,0.9); border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:64px 48px; text-align:center;">
+          <span class="section-eyebrow">The Team</span>
+          <h2 class="section-title" style="margin-top:16px;">
+            Built by people who&rsquo;ve shipped<br><span>50+ payer implementations.</span>
+          </h2>
+          <p style="font-size:1.05rem; color:rgba(176,176,176,0.8); max-width:700px; margin:0 auto 44px auto; line-height:1.75;">
+            Cloud Health Office was created by a team with 25+ years of combined experience building
+            and implementing core administration platforms at Medicaid MCOs, Medicare Advantage plans,
+            and commercial payers. We built this because we&rsquo;ve watched health plans spend $2M+
+            and wait 18 months for integrations that should take weeks.
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:28px; margin:0 0 44px 0; text-align:left;">
+            <div>
+              <div style="color:#00ffff; font-weight:700; font-size:0.95rem; margin-bottom:8px;">Core Admin Systems</div>
+              <p style="font-size:0.88rem; color:rgba(176,176,176,0.65); margin:0; line-height:1.6;">Deep expertise in health plan core administration platform implementations across all major platforms.</p>
+            </div>
+            <div>
+              <div style="color:#00ffff; font-weight:700; font-size:0.95rem; margin-bottom:8px;">Clearinghouse EDI</div>
+              <p style="font-size:0.88rem; color:rgba(176,176,176,0.65); margin:0; line-height:1.6;">Production integrations with every major clearinghouse in the healthcare market.</p>
+            </div>
+            <div>
+              <div style="color:#00ffff; font-weight:700; font-size:0.95rem; margin-bottom:8px;">Regulatory Compliance</div>
+              <p style="font-size:0.88rem; color:rgba(176,176,176,0.65); margin:0; line-height:1.6;">HIPAA, CMS-0057-F, ACA, and state-level regulatory implementations at enterprise scale.</p>
+            </div>
+            <div>
+              <div style="color:#00ffff; font-weight:700; font-size:0.95rem; margin-bottom:8px;">Enterprise Cloud</div>
+              <p style="font-size:0.88rem; color:rgba(176,176,176,0.65); margin:0; line-height:1.6;">Azure-native, Kubernetes-first architecture designed for production health plan operations.</p>
+            </div>
+          </div>
+
+          <p style="font-weight:700; color:#00ffff; font-size:1.05rem; margin:0;">
+            Now accepting pilot deployments for select health plans in 2026.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FROM THE BLOG ===== -->
+    <section>
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-eyebrow">From the Blog</span>
+          <h2 class="section-title">The deadline is closer<br><span>than you think.</span></h2>
+        </div>
+        <a href="https://medium.com/@markus_31/the-january-2027-deadline-most-healthcare-payers-will-miss-and-how-to-avoid-being-one-of-them-e37b74328886"
+           target="_blank" rel="noopener noreferrer"
+           class="featured-article-link">
+          <div class="featured-article-card">
+            <div class="featured-article-meta">
+              <span class="featured-article-badge">Medium</span>
+              <span class="featured-article-tags">CMS-0057-F · Healthcare Payer Compliance</span>
+            </div>
+            <h3 class="featured-article-title">
+              The January 2027 Deadline Most Healthcare Payers Will Miss — And How to Avoid Being One of Them
+            </h3>
+            <p class="featured-article-excerpt">
+              A breakdown of what CMS-0057-F actually requires, why most health plans are behind schedule,
+              and the practical steps to achieve compliance without a full core system replacement.
+            </p>
+            <span class="featured-article-cta">Read on Medium →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="cta-full-section" id="schedule-demo">
+      <div style="position:relative; z-index:10; max-width:820px; margin:0 auto;">
+        <div class="hero-badge" style="margin-bottom:36px; opacity:1; animation:none;">Currently Accepting Pilot Deployments &mdash; 2026</div>
+
+        <h2 class="cta-headline">
+          Ready to build the integration layer<br>
+          <span>your payers already needed?</span>
+        </h2>
+
+        <p style="font-size:1.15rem; color:rgba(176,176,176,0.8); margin:24px 0 48px 0; line-height:1.75; position:relative;">
+          Medicaid MCOs, Medicare Advantage, and commercial payers with on-premise core systems.<br>
+          <strong style="color:white;">Deployment in weeks, not months. Production-grade from day one.</strong>
+        </p>
+
+        <div class="hero-cta" style="position:relative; opacity:1; animation:none;">
+          <a href="https://portal.cloudhealthoffice.com/contact-sales"
+             class="button"
+             style="font-size:1.1rem; padding:17px 48px;">Contact Sales &rarr;</a>
+          <a href="https://portal.cloudhealthoffice.com/signup"
+             class="button button-secondary"
+             style="font-size:1.1rem; padding:17px 48px;">Start Free Trial &rarr;</a>
+        </div>
+
+        <p style="margin-top:28px; font-size:0.93rem; color:rgba(128,128,128,0.65); position:relative;">
+          Questions? Email <a href="mailto:sales@cloudhealthoffice.com" style="color:#00ff88;">sales@cloudhealthoffice.com</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Cloud Health Office</h4>
+          <p>The modern integration layer for health plan core administration systems. CMS-0057-F compliant, multi-clearinghouse EDI, FHIR R4 APIs.</p>
+          <p style="font-size:0.82rem; color:rgba(128,128,128,0.45);">BSL 1.1 &nbsp;&middot;&nbsp; v4.0.0 Production</p>
+        </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="/solutions-payers">Solutions</a></li>
+            <li><a href="/cms-0057f-compliance">CMS-0057-F Compliance</a></li>
+            <li><a href="/platform">Platform</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/pricing-api">Repricing API</a></li>
+            <li><a href="/release-notes">Release Notes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Documentation</h5>
+          <ul>
+            <li><a href="/docs/quickstart">Quick Start</a></li>
+            <li><a href="/docs/compliance">CMS-0057-F Guide</a></li>
+            <li><a href="/docs/architecture">Architecture</a></li>
+            <li><a href="/docs/api">API Reference</a></li>
+            <li><a href="/docs/deployment">Deployment</a></li>
+            <li><a href="https://portal.cloudhealthoffice.com" target="_blank" rel="noopener noreferrer">Demo Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="https://portal.cloudhealthoffice.com/contact-sales">Contact Sales</a></li>
+            <li><a href="mailto:enterprise@cloudhealthoffice.com">Enterprise Support</a></li>
+            <li><a href="mailto:partners@cloudhealthoffice.com">Partner Program</a></li>
+            <li><a href="mailto:investors@cloudhealthoffice.com">Investors</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Health Office &mdash; Aurelianware, Inc. &nbsp;&middot;&nbsp; Source-available platform &nbsp;&middot;&nbsp; Not affiliated with any payer platform or clearinghouse vendors.</p>
+        <p><a href="/pricing" style="color:rgba(128,128,128,0.45);">Pricing</a> &nbsp;&middot;&nbsp; <a href="mailto:contact@cloudhealthoffice.com" style="color:rgba(128,128,128,0.45);">Contact</a> &nbsp;&middot;&nbsp; <a href="legal/privacy-policy.html" style="color:rgba(128,128,128,0.45);">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
