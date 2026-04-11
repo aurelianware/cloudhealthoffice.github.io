@@ -115,6 +115,15 @@
       "rewrite": "/docs/compliance.html"
     },
     {
+      "route": "/docs/claims-examiner.html",
+      "redirect": "/docs/claims-examiner",
+      "statusCode": 301
+    },
+    {
+      "route": "/docs/claims-examiner",
+      "rewrite": "/docs/claims-examiner.html"
+    },
+    {
       "route": "/docs/architecture.html",
       "redirect": "/docs/architecture",
       "statusCode": 301

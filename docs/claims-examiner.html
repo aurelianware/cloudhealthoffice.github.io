@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claims Examiner — Cloud Health Office Documentation</title>
+  <meta name="description" content="User guide for the Cloud Health Office Claims Examiner — review pended claims, resolve NCCI/MUE edits, adjust allowed amounts, and finalize adjudication decisions from the examiner workbench." />
+  <meta name="keywords" content="claims examiner, pended claims review, NCCI edit resolution, manual adjudication, healthcare claims workbench, Cloud Health Office examiner, claim adjustment workflow" />
+  <link rel="canonical" href="https://cloudhealthoffice.com/docs/claims-examiner" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cloudhealthoffice.com/docs/claims-examiner" />
+  <meta property="og:title" content="Claims Examiner — Cloud Health Office" />
+  <meta property="og:description" content="Review pended claims, resolve edit failures, and finalize adjudication decisions from the Claims Examiner workbench." />
+  <meta property="og:image" content="https://cloudhealthoffice.com/graphics/logo-cloudhealthoffice-sentinel-primary.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Cloud Health Office Claims Examiner User Guide",
+    "description": "How to review pended claims, resolve NCCI/MUE edits, adjust allowed amounts, and finalize adjudication decisions using the Claims Examiner workbench.",
+    "url": "https://cloudhealthoffice.com/docs/claims-examiner",
+    "author": { "@type": "Organization", "name": "Aurelianware, Inc." },
+    "publisher": { "@type": "Organization", "name": "Cloud Health Office", "url": "https://cloudhealthoffice.com" },
+    "datePublished": "2026-04-11",
+    "proficiencyLevel": "Intermediate",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cloudhealthoffice.com" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://cloudhealthoffice.com/docs" },
+        { "@type": "ListItem", "position": 3, "name": "Claims Examiner", "item": "https://cloudhealthoffice.com/docs/claims-examiner" }
+      ]
+    }
+  }
+  </script>
+
+  <script async src="https://plausible.io/js/pa-JQNNrBf52mV2BxHPtkLAv.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)}</script>
+  <link rel="stylesheet" href="/css/sentinel.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <script src="/js/auth.js"></script>
+  <script src="/js/mobile-nav.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Cloud Health Office Home">
+        <img src="/graphics/logo-cloudhealthoffice-sentinel-primary.svg" alt="" class="nav-logo-img" aria-hidden="true" />
+        <span class="nav-logo-text">Cloud Health Office</span>
+      </a>
+      <div class="nav-right">
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" id="mobileMenuToggle">&#9776;</button>
+        <ul id="mainNav">
+          <li><a href="/solutions-payers">Solutions</a></li>
+          <li><a href="/cms-0057f-compliance">CMS Compliance</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/platform">Platform</a></li>
+          <li><a href="/docs" style="color:#00ffff; font-weight:bold;">Docs</a></li>
+          <li><a href="https://portal.cloudhealthoffice.com" target="_blank" rel="noopener noreferrer" style="color:#00ff88;">Demo Portal</a></li>
+          <li><a href="https://github.com/aurelianware/cloudhealthoffice" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="/login" style="color:#00ffff; font-weight:bold;">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>document.addEventListener('DOMContentLoaded', () => { updateNavigation('#mainNav'); });</script>
+
+  <main id="main-content">
+    <div class="docs-wrapper">
+
+      <!-- Sidebar -->
+      <aside class="docs-sidebar" id="docsSidebar">
+        <div class="docs-sidebar-inner">
+          <div class="docs-sidebar-section">
+            <div class="docs-sidebar-section-title">Getting Started</div>
+            <ul>
+              <li><a href="/docs">Docs Home</a></li>
+              <li><a href="/docs/quickstart">Quick Start</a></li>
+            </ul>
+          </div>
+          <div class="docs-sidebar-section">
+            <div class="docs-sidebar-section-title">On This Page</div>
+            <ul class="toc-sub">
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#who-should-use">Who Should Use It</a></li>
+              <li><a href="#prerequisites">Prerequisites</a></li>
+              <li><a href="#open-workbench">1. Open the Workbench</a></li>
+              <li><a href="#review-queue">2. Triage the Queue</a></li>
+              <li><a href="#inspect-claim">3. Inspect a Claim</a></li>
+              <li><a href="#resolve-edits">4. Resolve Edits</a></li>
+              <li><a href="#adjust-amounts">5. Adjust Allowed Amounts</a></li>
+              <li><a href="#finalize">6. Finalize the Decision</a></li>
+              <li><a href="#audit-trail">Audit Trail</a></li>
+              <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+          </div>
+          <div class="docs-sidebar-section">
+            <div class="docs-sidebar-section-title">Guides</div>
+            <ul>
+              <li><a href="/docs/compliance">CMS-0057-F Compliance</a></li>
+              <li><a href="/docs/claims-examiner" class="active">Claims Examiner</a></li>
+              <li><a href="/docs/architecture">Architecture</a></li>
+              <li><a href="/docs/api">API Reference</a></li>
+              <li><a href="/docs/deployment">Deployment</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="docs-content">
+        <div class="docs-breadcrumb">
+          <a href="/">Home</a>
+          <span class="sep">&#x25B8;</span>
+          <a href="/docs">Docs</a>
+          <span class="sep">&#x25B8;</span>
+          <span class="current">Claims Examiner</span>
+        </div>
+
+        <h1>Claims Examiner</h1>
+        <p class="docs-subtitle">
+          Review pended claims, resolve NCCI/MUE edit failures, adjust allowed amounts, and finalize adjudication decisions from a single workbench. The Claims Examiner extends the auto-adjudication pipeline with a human-in-the-loop UI for claims that require manual judgment.
+        </p>
+
+        <div class="callout callout-success">
+          <div class="callout-title">What you'll learn</div>
+          <p>How to open the examiner workbench, triage the pended-claims queue, inspect a claim and its adjudication trace, resolve edit failures, adjust line-level allowed amounts, and finalize a pay, deny, or pend-for-information decision — with a full audit trail.</p>
+        </div>
+
+        <!-- Overview -->
+        <h2 id="overview">Overview</h2>
+        <p>
+          Cloud Health Office auto-adjudicates 837P and 837I claims through the
+          <a href="/docs/architecture#adjudication">10-step adjudication pipeline</a>
+          (code validation, coverage, provider, prior auth, benefits, NCCI/MUE, allowed amount, cost-sharing, and status update). Most claims finalize without human review. A subset — typically 5&ndash;15% depending on plan configuration — lands in a <em>pended</em> state and needs an examiner before it can pay or deny.
+        </p>
+        <p>
+          The Claims Examiner is the workbench for those claims. It exposes the same services the pipeline uses (<code>claims-service</code>, <code>benefit-plan-service</code>, <code>payment-service</code>), layered behind a UI that surfaces why the claim pended, what the pipeline already computed, and what actions are available.
+        </p>
+
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pended Queue</td><td>Filter and sort pended claims by pend reason, age, payer, provider, or dollar amount.</td></tr>
+            <tr><td>Claim Inspector</td><td>Header, service lines, diagnosis codes, eligibility snapshot, and the adjudication trace from every pipeline step.</td></tr>
+            <tr><td>Edit Resolution</td><td>Override, bypass, or accept NCCI / MUE edit failures with a required reason code.</td></tr>
+            <tr><td>Line Adjustments</td><td>Modify allowed amounts, units, or modifiers on individual service lines before finalization.</td></tr>
+            <tr><td>Decision</td><td>Pay, deny, or pend-for-information (RFAI) with standard CARC / RARC reason codes.</td></tr>
+            <tr><td>Audit Trail</td><td>Every examiner action is recorded with user, timestamp, before/after values, and reason.</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Who Should Use -->
+        <h2 id="who-should-use">Who Should Use It</h2>
+        <p>The Claims Examiner is intended for users whose role includes manual claim adjudication:</p>
+        <ul>
+          <li><strong>Claims examiners</strong> — day-to-day review and finalization of pended claims.</li>
+          <li><strong>Claims leads / supervisors</strong> — queue assignment, override approvals, and audit review.</li>
+          <li><strong>Medical directors</strong> — clinical review of claims pended for medical necessity.</li>
+          <li><strong>Configuration analysts</strong> — to confirm whether a pend pattern is caused by benefit plan or fee schedule misconfiguration.</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Role required</div>
+          <p>Access is gated by the <code>claims.examiner</code> role. Supervisors additionally need <code>claims.examiner.supervisor</code> to approve high-dollar overrides. Roles are assigned in the tenant's identity provider and enforced server-side — users without the role will not see the Claims Examiner menu item.</p>
+        </div>
+
+        <!-- Prerequisites -->
+        <h2 id="prerequisites">Prerequisites</h2>
+        <table>
+          <thead>
+            <tr><th>Requirement</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Running Cloud Health Office stack</td><td>Local Docker Compose or deployed cluster — see <a href="/docs/quickstart">Quick Start</a>.</td></tr>
+            <tr><td>At least one benefit plan seeded</td><td>Required so the pipeline can calculate cost-sharing for re-adjudication.</td></tr>
+            <tr><td>User with <code>claims.examiner</code> role</td><td>Assigned via your tenant IdP (Azure AD, Okta, Auth0).</td></tr>
+            <tr><td>Modern browser</td><td>Chrome, Edge, Firefox, or Safari — latest two versions.</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Step 1 -->
+        <h2 id="open-workbench">1. Open the Workbench</h2>
+
+        <div class="step">
+          <span class="step-number">1</span>
+          <div class="step-body">
+            <h3>Sign in and open Claims Examiner</h3>
+            <p>From the <a href="https://portal.cloudhealthoffice.com" target="_blank" rel="noopener noreferrer">Demo Portal</a> or your deployed instance, sign in and select <strong>Claims &rarr; Examiner Workbench</strong> from the main navigation.</p>
+            <p>The workbench loads with the pended-claims queue scoped to your tenant. If you belong to more than one tenant, use the tenant switcher in the top-right to pick the one you want to work in.</p>
+            <div class="callout callout-warning">
+              <div class="callout-title">Tenant isolation</div>
+              <p>The examiner enforces the same <code>X-Tenant-ID</code> isolation as every other Cloud Health Office service. You will never see claims belonging to another tenant, even with the supervisor role.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <h2 id="review-queue">2. Triage the Queue</h2>
+
+        <div class="step">
+          <span class="step-number">2</span>
+          <div class="step-body">
+            <h3>Filter, sort, and claim work</h3>
+            <p>The queue shows one row per pended claim with these columns:</p>
+            <table>
+              <thead>
+                <tr><th>Column</th><th>Meaning</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Claim #</td><td>Payer claim number (maps to 837 CLM01).</td></tr>
+                <tr><td>Member</td><td>Member ID and name.</td></tr>
+                <tr><td>Provider</td><td>Billing NPI and name.</td></tr>
+                <tr><td>Pend Reason</td><td>Primary reason the pipeline pended the claim (e.g. <code>NCCI_CONFLICT</code>, <code>NO_FEE_SCHEDULE</code>, <code>ELIGIBILITY_GAP</code>, <code>MANUAL_REVIEW</code>).</td></tr>
+                <tr><td>Age</td><td>Calendar days since receipt — drives regulatory timeliness SLAs.</td></tr>
+                <tr><td>Billed</td><td>Total billed amount on the claim.</td></tr>
+                <tr><td>Assignee</td><td>Examiner the claim is currently checked out to (blank if unassigned).</td></tr>
+              </tbody>
+            </table>
+            <p>Use the filter bar at the top of the queue to narrow by pend reason, age bucket, payer, provider, or dollar range. Click any column header to sort. Click <strong>Claim</strong> on a row to open it in the inspector — this also checks the claim out to you so another examiner does not pick it up at the same time.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <h2 id="inspect-claim">3. Inspect a Claim</h2>
+
+        <div class="step">
+          <span class="step-number green">3</span>
+          <div class="step-body">
+            <h3>Review header, lines, and adjudication trace</h3>
+            <p>The inspector has three panels:</p>
+            <ul>
+              <li><strong>Header</strong> — member, subscriber, provider, payer, service dates, diagnosis codes, prior auth references.</li>
+              <li><strong>Service lines</strong> — CPT/HCPCS, modifiers, units, POS, billed, and the currently-computed allowed, plan paid, and member responsibility.</li>
+              <li><strong>Adjudication trace</strong> — step-by-step output from the 10-step pipeline, including which NCCI/MUE edits fired, which fee schedule was looked up, and how cost-sharing was computed.</li>
+            </ul>
+            <p>Use the trace panel to understand <em>why</em> the claim pended before you change anything. The trace is read-only and immutable — it records the state the pipeline produced when it pended the claim.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <h2 id="resolve-edits">4. Resolve Edit Failures</h2>
+
+        <div class="step">
+          <span class="step-number green">4</span>
+          <div class="step-body">
+            <h3>Accept, override, or bypass NCCI / MUE edits</h3>
+            <p>If the pend reason is an edit failure, open the <strong>Edits</strong> tab on the inspector. Each failing edit shows the CPT pair, the NCCI/MUE indicator, and the modifier rule that would allow an override.</p>
+            <p>For each edit you have three actions:</p>
+            <ul>
+              <li><strong>Accept edit</strong> — the edit is correct; the denied line stays denied. Pick a CARC / RARC reason code.</li>
+              <li><strong>Override</strong> — bypass the edit and allow the line. Requires a documented override reason and, above the configured dollar threshold, a supervisor approval.</li>
+              <li><strong>Add modifier</strong> — attach a modifier (e.g. <code>59</code>, <code>XE</code>, <code>XS</code>) that legitimately resolves the NCCI conflict per CMS guidance.</li>
+            </ul>
+            <div class="callout callout-warning">
+              <div class="callout-title">Overrides are audited</div>
+              <p>Every override is recorded with your user ID, timestamp, reason code, and free-text justification. Plan administrators receive a weekly override report for compliance review.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <h2 id="adjust-amounts">5. Adjust Allowed Amounts</h2>
+
+        <div class="step">
+          <span class="step-number">5</span>
+          <div class="step-body">
+            <h3>Modify line-level allowed amounts</h3>
+            <p>On the <strong>Lines</strong> tab, each service line has an editable <strong>Allowed</strong> field. Typical reasons to adjust:</p>
+            <ul>
+              <li>Fee schedule lookup returned no match and the pipeline pended to let an examiner price the line manually.</li>
+              <li>Negotiated single-case agreement pricing that is not yet loaded into the fee schedule.</li>
+              <li>Out-of-network pricing adjustment based on a Qualified Payment Amount (QPA).</li>
+            </ul>
+            <p>When you change an allowed amount, the inspector re-runs benefit calculation and cost-sharing against the current plan and shows you the new plan-paid and member-responsibility values before you commit. Use the <strong>Preview</strong> button to compare the old and new totals side-by-side.</p>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <h2 id="finalize">6. Finalize the Decision</h2>
+
+        <div class="step">
+          <span class="step-number green">6</span>
+          <div class="step-body">
+            <h3>Pay, deny, or pend for information</h3>
+            <p>When the claim is ready, click <strong>Finalize</strong> in the inspector toolbar and pick one of:</p>
+            <table>
+              <thead>
+                <tr><th>Decision</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Pay</strong></td><td>Claim moves to the next payment batch. A downstream 835 ERA will reflect the final allowed, plan-paid, and member-responsibility amounts.</td></tr>
+                <tr><td><strong>Deny</strong></td><td>Claim is denied with the CARC/RARC codes you picked. A denial 835 is generated on the next batch cycle.</td></tr>
+                <tr><td><strong>Pend for information (RFAI)</strong></td><td>Generates a 277 Request for Additional Information to the provider. The claim re-enters the examiner queue when the response arrives.</td></tr>
+              </tbody>
+            </table>
+            <p>Finalization is transactional: the claim status update, audit entry, and payment queueing all commit together. If any step fails the claim stays checked out to you and you can retry.</p>
+            <div class="callout callout-info">
+              <div class="callout-title">Timeliness</div>
+              <p>The workbench surfaces the regulatory SLA clock next to every claim (e.g. 30 days for clean claims under most state prompt-pay laws). Pended claims approaching their deadline are highlighted in amber; past-deadline claims in red.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Trail -->
+        <h2 id="audit-trail">Audit Trail</h2>
+        <p>
+          Every action taken in the Claims Examiner is persisted to an immutable audit log — queue check-out, edit override, allowed-amount adjustment, decision finalization, and supervisor approval. The log captures:
+        </p>
+        <ul>
+          <li>User ID and display name</li>
+          <li>UTC timestamp</li>
+          <li>Action type and target (claim, line, edit)</li>
+          <li>Before and after values</li>
+          <li>Reason code and free-text justification</li>
+          <li>Supervisor approval reference (where required)</li>
+        </ul>
+        <p>
+          Supervisors can open the audit trail on any claim from the inspector's <strong>History</strong> tab. The same records are exported nightly to the tenant's compliance bucket for long-term retention and are available via the Claims Audit API for integration with GRC tooling.
+        </p>
+
+        <!-- Troubleshooting -->
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <table>
+          <thead>
+            <tr><th>Symptom</th><th>Likely cause &amp; fix</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Examiner Workbench menu item is missing after sign-in</td>
+              <td>Your account does not have the <code>claims.examiner</code> role. Ask a tenant administrator to assign it in your identity provider.</td>
+            </tr>
+            <tr>
+              <td>Queue is empty but you expect pended claims</td>
+              <td>Confirm the tenant switcher is set to the correct tenant, then clear any active queue filters. If the queue is still empty, the pipeline may have auto-finalized the claims — check the claims search.</td>
+            </tr>
+            <tr>
+              <td>Override button is disabled on an edit</td>
+              <td>The override exceeds the configured dollar threshold and requires a supervisor. Click <strong>Request approval</strong> to route the override.</td>
+            </tr>
+            <tr>
+              <td>Preview shows no change after editing allowed amount</td>
+              <td>The benefit for that service category is not deductible-applicable and is paid at 100% &mdash; the plan-paid equals allowed regardless of the new amount. Verify the benefit configuration on the associated plan.</td>
+            </tr>
+            <tr>
+              <td>Finalize returns <code>409 Conflict</code></td>
+              <td>Another examiner or an automated process updated the claim since you opened it. Reload the claim in the inspector and re-apply your changes.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-success">
+          <div class="callout-title">Next steps</div>
+          <p>Explore the underlying APIs in the <a href="/docs/api">API Reference</a>, or see how pended claims arrive at the workbench in the <a href="/docs/architecture#adjudication">Claims Adjudication Pipeline</a>.</p>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="docs-pager">
+          <a href="/docs/compliance">
+            <div class="pager-label">&larr; Previous</div>
+            <div class="pager-title">CMS-0057-F Compliance</div>
+          </a>
+          <a href="/docs/architecture" class="next">
+            <div class="pager-label">Next &rarr;</div>
+            <div class="pager-title">Architecture</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <button class="docs-mobile-toggle" id="docsMobileToggle" aria-label="Toggle docs navigation">&#9776;</button>
+  <div class="docs-sidebar-overlay" id="docsSidebarOverlay"></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Cloud Health Office</h4>
+          <p>The modern integration layer for health plan core administration systems.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Documentation</h5>
+          <ul>
+            <li><a href="/docs/quickstart">Quick Start</a></li>
+            <li><a href="/docs/compliance">CMS-0057-F Guide</a></li>
+            <li><a href="/docs/claims-examiner">Claims Examiner</a></li>
+            <li><a href="/docs/architecture">Architecture</a></li>
+            <li><a href="/docs/api">API Reference</a></li>
+            <li><a href="/docs/deployment">Deployment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="https://portal.cloudhealthoffice.com/contact-sales">Contact Sales</a></li>
+            <li><a href="mailto:enterprise@cloudhealthoffice.com">Enterprise Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cloud Health Office &mdash; Aurelianware, Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('docsMobileToggle');
+    const sidebar = document.getElementById('docsSidebar');
+    const overlay = document.getElementById('docsSidebarOverlay');
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', () => { sidebar.classList.toggle('open'); overlay.classList.toggle('open'); });
+      overlay.addEventListener('click', () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); });
+    }
+  </script>
+</body>
+</html>
